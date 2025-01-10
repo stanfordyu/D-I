@@ -15,6 +15,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f4f4f4;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         /* Header with a hamburger menu */
@@ -103,10 +104,15 @@
             width: 100%;
             font-weight: bold;
             transition: background-color 0.3s;
+            display: block;
         }
 
+        /* Adjust gold highlight width */
         .nav-bar a:hover {
             background-color: #FFD700;
+            width: auto; /* Let it match the text width */
+            padding-left: 10px;
+            padding-right: 10px;
         }
 
         /* Show nav-bar when menu is open */
@@ -117,6 +123,12 @@
         /* Main content styling */
         main {
             padding: 80px 20px 20px;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        /* Main content shifts when menu is open */
+        .main-content-shift {
+            margin-left: 250px; /* Adjust main content when menu is open */
         }
 
     </style>
@@ -138,7 +150,7 @@
         </nav>
     </header>
 
-    <main>
+    <main onclick="closeMenu(event)">
         <h1>Welcome to the Cafes Page</h1>
         <p>Here you will find information about local cafes.</p>
     </main>
@@ -147,12 +159,23 @@
         function toggleMenu() {
             const menuIcon = document.querySelector('.menu-icon');
             const navBar = document.querySelector('.nav-bar');
+            const mainContent = document.querySelector('main');
             
             // Toggle the menu icon and the visibility of the nav bar
             navBar.classList.toggle('open');
             menuIcon.classList.toggle('open');
+            mainContent.classList.toggle('main-content-shift');
+        }
+
+        function closeMenu(event) {
+            // Close the menu if clicked outside the nav bar
+            const navBar = document.querySelector('.nav-bar');
+            if (navBar.classList.contains('open') && !event.target.closest('nav')) {
+                toggleMenu();
+            }
         }
     </script>
 
 </body>
 </html>
+``
