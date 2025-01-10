@@ -33,14 +33,49 @@
 
         /* Menu icon styling */
         .menu-icon {
-            font-size: 2rem;
+            width: 30px;
+            height: 30px;
+            position: relative;
             cursor: pointer;
             display: block;
+            transition: transform 0.3s ease;
         }
 
-        /* Toggle hamburger icon into X */
-        .menu-icon.open {
+        .menu-icon div {
+            position: absolute;
+            background-color: white;
+            width: 100%;
+            height: 4px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-icon div:nth-child(1) {
+            top: 0;
+        }
+
+        .menu-icon div:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .menu-icon div:nth-child(3) {
+            bottom: 0;
+        }
+
+        /* When menu is open, style changes for the 'X' */
+        .menu-icon.open div:nth-child(1) {
             transform: rotate(45deg);
+            top: 50%;
+        }
+
+        .menu-icon.open div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.open div:nth-child(3) {
+            transform: rotate(-45deg);
+            bottom: 50%;
         }
 
         /* Navigation bar styling */
@@ -79,14 +114,17 @@
             padding: 80px 20px 20px;
         }
 
-        /* Optional: You can add any other section styles here */
     </style>
 </head>
 <body>
 
     <!-- Header Section -->
     <header>
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <nav class="nav-bar">
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -108,12 +146,6 @@
             // Toggle the menu icon and the visibility of the nav bar
             navBar.classList.toggle('open');
             menuIcon.classList.toggle('open');
-            // Toggle between ☰ (hamburger) and ❌ (X) icon
-            if (navBar.classList.contains('open')) {
-                menuIcon.textContent = '❌';
-            } else {
-                menuIcon.textContent = '☰';
-            }
         }
     </script>
 
