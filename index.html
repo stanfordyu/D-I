@@ -57,9 +57,35 @@
     
         /* Prevent content overlap */
         main {
-            margin-top: 175px; /* Push content down to avoid overlap */
+            margin-top: 120px; /* Push content down to avoid overlap */
             padding: 1rem;
         }
+
+        /* Image and Text Hyperlinks */
+        .link-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: black;
+            margin: 20px;
+            border: 2px solid #56018D;
+            padding: 10px;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .link-container:hover {
+            transform: scale(1.05);
+            box-shadow:0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .link-container img{
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+        .link-container h3 {
+            margin: 0;
+            font-size: 1.2rem;
     </style>
 </head>
 
@@ -69,7 +95,7 @@
     <header>
         <!-- Title Section -->
         <div class="title">
-            Abu Dhabi Winter Guide for NYUAD Students
+            Abu Dhabi Winter Guide for NYUAD Community
         </div>
 
         <!-- Navigation Links -->
@@ -85,9 +111,13 @@
     <!-- Start of Main Content: -->
     <main>
         <section>
-            <h2>Welcome</h2>
+            <h2>Welcome to </h2>
         </section>
-       
+
+        <a href="cafe.html" class="link-container">
+            <imag src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cafe">
+            <h3>Explore Cafes</h3>    
+        </a>
         <section id="cafe">
             <h2>Cafés (suitible for studying and chilling)</h2>
             <ul>
