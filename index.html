@@ -64,7 +64,7 @@
         /* Image and Text Hyperlinks */
         .image-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
         }
@@ -74,7 +74,7 @@
             align-items: center;
             text-decoration: none;
             color: black;
-            width: calc(33.33% - 20px);
+            width: calc(33.333% - 20px);
             margin: 20px;
             border: 2px solid #56018D;
             padding: 10px;
@@ -98,9 +98,19 @@
         }
 
         
-        /* Optional: Add hover effect for image */
+        /* Optional: Add hover effect for image & media scaling */
         .link-container:hover img {
             opacity: 0.9; /* Slightly dim the image on hover */
+        }
+        @media (max-width: 768px) {
+            .link-container {
+                width: calc(50% - 20px); /* 2 columns on medium screens */
+            }
+        }
+        @media (max-width: 480px) {
+            .link-container {
+                width: 100%; /* 1 column on small screens */
+            }
         }
         
     </style>
