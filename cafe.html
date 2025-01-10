@@ -52,6 +52,7 @@
 
         .menu-icon div:nth-child(1) {
             top: 0;
+            transform-origin: center;
         }
 
         .menu-icon div:nth-child(2) {
@@ -61,6 +62,7 @@
 
         .menu-icon div:nth-child(3) {
             bottom: 0;
+            transform-origin: center;
         }
 
         /* When menu is open, style changes for the 'X' */
@@ -78,16 +80,19 @@
             bottom: 50%;
         }
 
-        /* Navigation bar styling */
+        /* Navigation bar styling (left-side slide) */
         .nav-bar {
-            display: none;
+            display: flex;
             flex-direction: column;
             align-items: center;
             background-color: #56018D;
-            position: absolute;
-            top: 80px;
-            width: 100%;
-            padding: 10px 0;
+            position: fixed;
+            left: -250px; /* Start hidden off-screen */
+            top: 0;
+            height: 100%;
+            width: 250px;
+            padding-top: 60px; /* Adjust top padding for the menu */
+            transition: left 0.3s ease-in-out; /* Smooth sliding animation */
         }
 
         .nav-bar a {
@@ -106,7 +111,7 @@
 
         /* Show nav-bar when menu is open */
         .nav-bar.open {
-            display: flex;
+            left: 0; /* Slide the menu into view */
         }
 
         /* Main content styling */
