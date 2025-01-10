@@ -3,13 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe Page</title>
+    <title>Cafes</title>
+/* Header with a hamburger menu */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #56018D;
+            padding: 1rem;
+            color: white;
+        }
+
+        .menu-icon {
+            font-size: 2rem;
+            cursor: pointer;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-icon.open {
+            transform: rotate(45deg);
+        }
+
+        .nav-bar {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            background-color: #56018D;
+            position: absolute;
+            top: 80px;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        .nav-bar a {
+            text-decoration: none;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .nav-bar a:hover {
+            background-color: #FFD700;
+        }
+
+        /* Show nav-bar when the menu is open */
+        .nav-bar.open {
+            display: flex;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Cafes</h1>
-    <p>This is the cafe page of the website.</p>
 
-    <!-- Link back to Home Page -->
-    <a href="index.html">Back to Home Page</a>
+    <!-- Header Section -->
+    <header>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <nav class="nav-bar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <script>
+        function toggleMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const navBar = document.querySelector('.nav-bar');
+            
+            // Toggle the menu icon and the visibility of the nav bar
+            navBar.classList.toggle('open');
+            menuIcon.classList.toggle('open');
+            // Toggle between ☰ (hamburger) and ❌ (X) icon
+            if (navBar.classList.contains('open')) {
+                menuIcon.textContent = '❌';
+            } else {
+                menuIcon.textContent = '☰';
+            }
+        }
+    </script>
+
 </body>
 </html>
