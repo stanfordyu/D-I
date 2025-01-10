@@ -96,9 +96,21 @@
         // Function to toggle the menu open and close
         function toggleMenu() {
             const sideMenu = document.getElementById('sideMenu');
+            const menuBtn = document.querySelector('.menu-btn');
+
             sideMenu.classList.toggle('open');
+
+            // Toggle the color of the hamburger button
+            if (sideMenu.classList.contains('open')) {
+                menuBtn.textContent = '×'; // Change to X when open
+                menuBtn.style.color = 'white'; // Change hamburger to white
+            } else {
+                menuBtn.textContent = '☰'; // Change back to hamburger when closed
+                menuBtn.style.color = 'black'; // Change hamburger to black
+            }
         }
     </script>
+
 
 </body>
 </html>
