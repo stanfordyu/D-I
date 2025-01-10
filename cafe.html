@@ -3,134 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafes</title>
+    <title>Cafe Page</title>
     <style>
-        /* General Styling */
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            overflow-x: hidden;
+            background-color: #f0f0f0;
         }
 
-        /* Header with a hamburger menu */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #56018D;
-            padding: 1rem;
-            color: white;
-        }
-
-        .menu-icon {
-            font-size: 2rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .menu-icon.open {
-            transform: rotate(45deg);
-        }
-
-        /* The Nav Menu */
-        .nav-bar {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #56018D;
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            padding-top: 3rem;
-            transition: left 0.3s ease-in-out;
-        }
-
-        .nav-bar.open {
-            left: 0; /* Slide the menu from left */
-        }
-
-        .nav-bar a {
-            text-decoration: none;
-            color: white;
-            padding: 1rem;
+        h1 {
+            font-size: 2.5rem;
+            color: #56018D;
             text-align: center;
-            width: 100%;
-            font-weight: bold;
-            transition: background-color 0.3s;
         }
-
-        .nav-bar a:hover {
-            background-color: #FFD700;
-        }
-
-        /* The Overlay to close the menu when clicked outside */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-
-        .overlay.active {
-            display: block;
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header>
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <nav class="nav-bar">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-    <!-- The Overlay that is used to close the menu -->
-    <div class="overlay" onclick="closeMenu()"></div>
-
-    <script>
-        function toggleMenu() {
-            const menuIcon = document.querySelector('.menu-icon');
-            const navBar = document.querySelector('.nav-bar');
-            const overlay = document.querySelector('.overlay');
-            
-            // Toggle the menu and its appearance
-            navBar.classList.toggle('open');
-            menuIcon.classList.toggle('open');
-            overlay.classList.toggle('active');
-
-            // Toggle the hamburger icon to X when open
-            if (navBar.classList.contains('open')) {
-                menuIcon.textContent = '❌';  // X icon when open
-            } else {
-                menuIcon.textContent = '☰';  // Hamburger icon when closed
-            }
-        }
-
-        function closeMenu() {
-            const menuIcon = document.querySelector('.menu-icon');
-            const navBar = document.querySelector('.nav-bar');
-            const overlay = document.querySelector('.overlay');
-
-            // Close the menu and reset the icon
-            navBar.classList.remove('open');
-            menuIcon.classList.remove('open');
-            overlay.classList.remove('active');
-            menuIcon.textContent = '☰';  // Reset to hamburger
-        }
-    </script>
+    <h1>Welcome to Cafe Page</h1>
 
 </body>
 </html>
