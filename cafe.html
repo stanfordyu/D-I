@@ -27,7 +27,6 @@
             top: 20px;
             z-index: 1001;
             cursor: pointer;
-            transition: transform 0.3s ease;
         }
 
         /* Sidebar styling */
@@ -67,11 +66,6 @@
         .side-menu.open {
             left: 0;
         }
-
-        /* Change hamburger to X */
-        .menu-btn.open {
-            transform: rotate(45deg);
-        }
     </style>
 </head>
 <body>
@@ -94,11 +88,9 @@
         // Function to toggle the menu open and close
         function toggleMenu() {
             const sideMenu = document.getElementById('sideMenu');
-            const menuBtn = document.querySelector('.menu-btn');
-
-            // Toggle the menu and hamburger icon
             sideMenu.classList.toggle('open');
-            menuBtn.classList.toggle('open');
+        }
+    </script>
 
-            // Change the hamburger icon to an X
-            if (side
+</body>
+</html>
