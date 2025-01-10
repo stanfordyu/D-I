@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafes</title>
     <style>
+        /* Reset some default styling */
+        body, h1, h2, p, a {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* General body styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f4f4;
+        }
+
         /* Header with a hamburger menu */
         header {
             display: flex;
@@ -13,19 +25,25 @@
             background-color: #56018D;
             padding: 1rem;
             color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
 
+        /* Menu icon styling */
         .menu-icon {
             font-size: 2rem;
             cursor: pointer;
             display: block;
-            transition: transform 0.3s ease;
         }
 
+        /* Toggle hamburger icon into X */
         .menu-icon.open {
             transform: rotate(45deg);
         }
 
+        /* Navigation bar styling */
         .nav-bar {
             display: none;
             flex-direction: column;
@@ -51,11 +69,17 @@
             background-color: #FFD700;
         }
 
-        /* Show nav-bar when the menu is open */
+        /* Show nav-bar when menu is open */
         .nav-bar.open {
             display: flex;
         }
 
+        /* Main content styling */
+        main {
+            padding: 80px 20px 20px;
+        }
+
+        /* Optional: You can add any other section styles here */
     </style>
 </head>
 <body>
@@ -70,6 +94,11 @@
             <a href="#contact">Contact</a>
         </nav>
     </header>
+
+    <main>
+        <h1>Welcome to the Cafes Page</h1>
+        <p>Here you will find information about local cafes.</p>
+    </main>
 
     <script>
         function toggleMenu() {
