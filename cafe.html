@@ -7,11 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            padding: 0;
             background-color: #f0f0f0;
         }
 
@@ -19,12 +16,108 @@
             font-size: 2.5rem;
             color: #56018D;
             text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Hamburger menu styling */
+        .menu-btn {
+            font-size: 2.5rem;
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 1001;
+            cursor: pointer;
+        }
+
+        /* Sidebar styling */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #56018D;
+            color: white;
+            transition: left 0.3s ease;
+            padding-top: 60px;
+            z-index: 1000;
+        }
+
+        .side-menu a {
+            text-decoration: none;
+            color: white;
+            padding: 15px;
+            display: block;
+            font-size: 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .side-menu a:hover {
+            background-color: #FFD700;
+        }
+
+        /* Overlay effect for when the menu is open */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0s 0.3s;
+            z-index: 999;
+        }
+
+        /* Show the menu and overlay when active */
+        .side-menu.open {
+            left: 0;
+        }
+
+        .overlay.open {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.3s ease;
         }
     </style>
 </head>
 <body>
 
+    <!-- Hamburger Button -->
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <!-- Side Menu -->
+    <div class="side-menu" id="sideMenu">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <!-- Overlay to close the menu when clicked outside -->
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+    <!-- Main content -->
     <h1>Welcome to Cafe Page</h1>
+
+    <script>
+        // Function to toggle the menu open and close
+        function toggleMenu() {
+            const sideMenu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('overlay');
+            sideMenu.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        // Function to close the menu
+        function closeMenu() {
+            const sideMenu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('overlay');
+            sideMenu.classList.remove('open');
+            overlay.classList.remove('open');
+        }
+    </script>
 
 </body>
 </html>
