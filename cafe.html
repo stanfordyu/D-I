@@ -27,6 +27,7 @@
             top: 20px;
             z-index: 1001;
             cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
         /* Sidebar styling */
@@ -41,6 +42,10 @@
             transition: left 0.3s ease;
             padding-top: 60px;
             z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .side-menu a {
@@ -50,6 +55,8 @@
             display: block;
             font-size: 1.5rem;
             transition: background-color 0.3s ease;
+            width: 100%;
+            text-align: center;  /* Center the text */
         }
 
         .side-menu a:hover {
@@ -59,6 +66,11 @@
         /* Show the menu when active */
         .side-menu.open {
             left: 0;
+        }
+
+        /* Change hamburger to X */
+        .menu-btn.open {
+            transform: rotate(45deg);
         }
     </style>
 </head>
@@ -82,9 +94,11 @@
         // Function to toggle the menu open and close
         function toggleMenu() {
             const sideMenu = document.getElementById('sideMenu');
-            sideMenu.classList.toggle('open');
-        }
-    </script>
+            const menuBtn = document.querySelector('.menu-btn');
 
-</body>
-</html>
+            // Toggle the menu and hamburger icon
+            sideMenu.classList.toggle('open');
+            menuBtn.classList.toggle('open');
+
+            // Change the hamburger icon to an X
+            if (side
