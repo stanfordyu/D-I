@@ -7,53 +7,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="styles.css"> Link to your CSS file -->
     <style>
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        nav ul li {
-            margin-bottom: 10px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-        }
+        
+        <!-- General Styling -->
         body {
             margin: 10px;
             font-family: 'Inter', sans-serif;
         }
+        h1, h2 {
+            font-size: 32px;
+            margin: 0px;
+        }
+
+        <!-- Header Styling -->
         header {
-            display: flex;
-            justify-content: space-between; /* Adjusts spacing between items */
-            align-items: center; /* Aligns items vertically */
-            padding: 1rem;
-            text-align: center;
-            z-index: 1000;
             background-color: #56018D;
             color: white;
             position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
-        .logo {
-            font-size: 1.5em;
+        .title {
+            text-align: center;
+            padding: 1rem 0; /* Space around the title */
+            font-size: 1.8rem;
+            font-weight: bold;
         }
-        .nav-links {
+
+        .nav-bar {
             display: flex;
-            gap: 15px; /* Adds spacing between links */
+            justify-content: center; /* Center the navigation links */
+            background-color: #4A017C; /* Slightly darker for separation */
+            padding: 0.5rem 0; /* Space around the links */
         }
-        .nav-links a {
+
+        .nav-bar a {
             text-decoration: none;
             color: white;
-            font-size: 1em;
+            margin: 0 1rem; /* Space between links */
+            font-size: 1rem;
+            font-weight: bold;
+            transition: color 0.3s;
         }
-        
-        h1 {
-            font-size: 32px;
-            margin: 5px;
+        .nav-bar a:hover {
+            color: #FFD700; /* Gold color for hover */
         }
     
+        <!-- Prevent content overlap -->
         main {
             margin-top: 250px; /* Push content down to avoid overlap */
             padding: 1rem;
