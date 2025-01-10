@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafes</title>
     <style>
+        /* General Styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
         /* Header with a hamburger menu */
         header {
             display: flex;
@@ -18,7 +26,6 @@
         .menu-icon {
             font-size: 2rem;
             cursor: pointer;
-            display: block;
             transition: transform 0.3s ease;
         }
 
@@ -26,24 +33,23 @@
             transform: rotate(45deg);
         }
 
+        /* The Nav Menu */
         .nav-bar {
-            display: none;
+            display: flex;
             flex-direction: column;
             align-items: center;
             background-color: #56018D;
-            position: absolute;
+            position: fixed;
             top: 0;
-            left: 0;
+            left: -250px;
             width: 250px;
             height: 100%;
             padding-top: 3rem;
-            transition: transform 0.3s ease;
-            transform: translateX(-100%);
+            transition: left 0.3s ease-in-out;
         }
 
         .nav-bar.open {
-            display: flex;
-            transform: translateX(0);
+            left: 0; /* Slide the menu from left */
         }
 
         .nav-bar a {
@@ -54,25 +60,25 @@
             width: 100%;
             font-weight: bold;
             transition: background-color 0.3s;
-            display: block;
         }
 
         .nav-bar a:hover {
             background-color: #FFD700;
         }
 
-        /* Close menu when clicking outside */
-        .close-menu {
-            position: absolute;
+        /* The Overlay to close the menu when clicked outside */
+        .overlay {
+            display: none;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: none;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
         }
 
-        .close-menu.active {
+        .overlay.active {
             display: block;
         }
 
@@ -91,39 +97,38 @@
         </nav>
     </header>
 
-    <!-- Close menu overlay to click outside -->
-    <div class="close-menu" onclick="closeMenu()"></div>
+    <!-- The Overlay that is used to close the menu -->
+    <div class="overlay" onclick="closeMenu()"></div>
 
     <script>
         function toggleMenu() {
             const menuIcon = document.querySelector('.menu-icon');
             const navBar = document.querySelector('.nav-bar');
-            const closeMenuOverlay = document.querySelector('.close-menu');
+            const overlay = document.querySelector('.overlay');
             
-            // Toggle the menu icon and the visibility of the nav bar
+            // Toggle the menu and its appearance
             navBar.classList.toggle('open');
             menuIcon.classList.toggle('open');
-            
-            // Toggle between ☰ (hamburger) and ❌ (X) icon
-            if (navBar.classList.contains('open')) {
-                menuIcon.textContent = '❌';
-            } else {
-                menuIcon.textContent = '☰';
-            }
+            overlay.classList.toggle('active');
 
-            // Show or hide the close menu overlay
-            closeMenuOverlay.classList.toggle('active');
+            // Toggle the hamburger icon to X when open
+            if (navBar.classList.contains('open')) {
+                menuIcon.textContent = '❌';  // X icon when open
+            } else {
+                menuIcon.textContent = '☰';  // Hamburger icon when closed
+            }
         }
 
         function closeMenu() {
             const menuIcon = document.querySelector('.menu-icon');
             const navBar = document.querySelector('.nav-bar');
-            const closeMenuOverlay = document.querySelector('.close-menu');
-            
+            const overlay = document.querySelector('.overlay');
+
+            // Close the menu and reset the icon
             navBar.classList.remove('open');
             menuIcon.classList.remove('open');
-            closeMenuOverlay.classList.remove('active');
-            menuIcon.textContent = '☰';  // Reset icon to hamburger
+            overlay.classList.remove('active');
+            menuIcon.textContent = '☰';  // Reset to hamburger
         }
     </script>
 
