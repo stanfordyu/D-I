@@ -86,6 +86,26 @@
         .link-container h3 {
             margin: 0;
             font-size: 1.2rem;
+        }
+
+        /* Layout for multiple images in a row */
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        /* Make sure images maintain consistent size */
+        .link-container {
+            width: 30%; /* Each image takes up 30% of the container width */
+        }
+
+        /* Optional: Add hover effect for image */
+        .link-container:hover img {
+            opacity: 0.9; /* Slightly dim the image on hover */
+        }
+        
     </style>
 </head>
 
@@ -114,10 +134,25 @@
             <h2>Welcome to </h2>
         </section>
 
+    <!-- IMAGE HYPERLINKS -->
+       <div class="image-container">
         <a href="cafe.html" class="link-container">
             <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cafe">
-            <h3>Explore Cafes</h3>    
+            <h3>Explore Cafes</h3>
         </a>
+    
+        <a href="hotel.html" class="link-container">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hotel">
+            <h3>Explore Hotels</h3>
+        </a>
+    
+        <a href="attractions.html" class="link-container">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Attractions">
+            <h3>Explore Attractions</h3>
+        </a>
+    </div>
+    <!-- END IMAGE HYPERLINKS -->
+        
         <section id="cafe">
             <h2>Cafés (suitible for studying and chilling)</h2>
             <ul>
