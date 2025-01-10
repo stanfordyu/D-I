@@ -54,12 +54,15 @@
             display: block;
             font-size: 1.5rem;
             transition: background-color 0.3s ease;
-            width: 100%;
+            width: 100%;  /* Ensure the width is restricted to the sidebar */
             text-align: center;  /* Center the text */
         }
 
         .side-menu a:hover {
             background-color: #FFD700;
+            width: calc(100% - 30px);  /* Adjust the width of the hover effect */
+            padding-left: 15px;  /* Keep the padding consistent with the width */
+            padding-right: 15px;  /* Same for the right side */
         }
 
         /* Show the menu when active */
