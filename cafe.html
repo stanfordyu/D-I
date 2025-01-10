@@ -27,10 +27,7 @@
             top: 20px;
             z-index: 1001;
             cursor: pointer;
-            color: white;
-            border: 2px solid white;
-            border-radius: 5px;
-            padding: 5px;
+            color: black;
         }
 
         /* Sidebar styling */
@@ -71,6 +68,11 @@
         /* Show the menu when active */
         .side-menu.open {
             left: 0;
+        }
+
+        /* Switch the color of hamburger icon */
+        .side-menu.open + .menu-btn {
+            color:white;
         }
     </style>
 </head>
