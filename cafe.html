@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Cafe Page with Hamburger to Cross</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,41 +12,41 @@
             background-color: #f0f0f0;
         }
 
-        /* Hamburger menu styling */
+        h1 {
+            font-size: 2.5rem;
+            color: #56018D;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Hamburger button styling */
         .menu-btn {
-            position: absolute;
-            z-index: 3;
-            left: 35px; /* Move to the left side */
-            top: 35px;
+            font-size: 2.5rem;
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 1001;
             cursor: pointer;
-            transition: all 0.5s ease-out;
+            color: black;
         }
 
-        .menu-btn .btn-line {
-            width: 28px;
-            height: 4px; /* Equal line thickness */
-            margin: 0 0 5px 0;
-            background: black;
-            transition: all 0.5s ease-out;
-        }
-
-        /* Active hamburger (cross) */
-        .menu-btn.close .btn-line:nth-child(1) {
+        /* Hamburger icon as three lines */
+        .menu-btn.open .line1 {
             transform: rotate(45deg) translate(5px, 5px);
-            background: white;
+            background-color: white;
         }
 
-        .menu-btn.close .btn-line:nth-child(2) {
+        .menu-btn.open .line2 {
             opacity: 0;
         }
 
-        .menu-btn.close .btn-line:nth-child(3) {
+        .menu-btn.open .line3 {
             transform: rotate(-45deg) translate(7px, -6px);
-            background: white;
+            background-color: white;
         }
 
         /* Sidebar styling */
-        .menu {
+        .side-menu {
             position: fixed;
             top: 0;
             left: -250px;
@@ -66,84 +63,65 @@
             align-items: center;
         }
 
-        .menu.show {
-            left: 0;
-        }
-
-        /* Styling the menu items */
-        .menu-nav {
-            list-style: none;
-            padding: 0;
-            width: 100%;
-        }
-
-        .nav-item {
-            margin: 20px 0;
-            width: 100%; /* Ensure full width for hover effect */
-        }
-
-        .nav-item a {
+        /* Sidebar links */
+        .side-menu a {
             text-decoration: none;
             color: white;
-            font-size: 1.5rem;
-            display: block; /* Ensure it takes full width */
             padding: 12px 0;
+            display: block;
+            font-size: 1.5rem;
+            width: 100%;
             text-align: center;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        .nav-item a:hover {
-            background-color: #FFD700; /* Gold background */
-            transform: scale(1.05);
+        /* Hover effect */
+        .side-menu a:hover {
+            background-color: #FFD700;
+            transform: scale(1.05); /* Small scale without overflowing */
         }
 
-        /* Main content */
-        h1 {
-            font-size: 2.5rem;
-            color: #56018D;
-            text-align: center;
-            margin-top: 20px;
+        /* Show the menu when active */
+        .side-menu.open {
+            left: 0;
+        }
+
+        /* Show the hamburger button in white when the menu is open */
+        .side-menu.open + .menu-btn {
+            color: white;
         }
     </style>
 </head>
+<body>
 
-<body id="bg-img">
-    <header>
-        <!-- Hamburger Button -->
-        <div class="menu-btn" onclick="toggleMenu()">
-            <div class="btn-line"></div>
-            <div class="btn-line"></div>
-            <div class="btn-line"></div>
-        </div>
+    <!-- Hamburger Button -->
+    <div class="menu-btn" onclick="toggleMenu()">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
 
-        <!-- Sidebar Menu -->
-        <nav class="menu">
-            <ul class="menu-nav">
-                <li class="nav-item"><a href="#">Home</a></li>
-                <li class="nav-item"><a href="#">About</a></li>
-                <li class="nav-item"><a href="#">Services</a></li>
-                <li class="nav-item"><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Sidebar Menu -->
+    <div class="side-menu" id="sideMenu">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
 
     <!-- Main Content -->
-    <h1>Welcome to the Cafe Page</h1>
+    <h1>Welcome to Cafe Page</h1>
 
     <script>
-        let showMenu = false;
-
-        // Toggle menu function
+        // Function to toggle the menu open and close
         function toggleMenu() {
+            const sideMenu = document.getElementById('sideMenu');
             const menuBtn = document.querySelector('.menu-btn');
-            const menu = document.querySelector('.menu');
 
-            menuBtn.classList.toggle('close');
-            menu.classList.toggle('show');
-
-            showMenu = !showMenu;
+            sideMenu.classList.toggle('open');
+            menuBtn.classList.toggle('open');
         }
     </script>
-</body>
 
+</body>
 </html>
