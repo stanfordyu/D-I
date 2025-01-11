@@ -172,7 +172,7 @@
         const map = L.map('map').setView([24.4539, 54.3773], 12);
 
         // Add map layer
-        L.tileLayer('https://api.maptiler.com/maps/cf65f596-c398-4efe-8a71-4618ff3076d5/?key=6oD4FBcy8WlEFT4uHfjs#1.0/0.00000/0.00000', {
+        L.tileLayer('https://api.maptiler.com/maps/cf65f596-c398-4efe-8a71-4618ff3076d5/{z}/{x}/{y}.png?key=6oD4FBcy8WlEFT4uHfjs', {
             attribution: '© MapTiler © OpenStreetMap contributors',
             maxZoom: 18
         }).addTo(map);
