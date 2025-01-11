@@ -6,17 +6,21 @@
     <title>Cafe Page</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Inter, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: white;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: #56018D;
             text-align: center;
             margin-top: 20px;
+        }
+        h2 {
+            font-size: 2rem;
+            color: black;
         }
 
         /* Hamburger button styling */
@@ -106,7 +110,6 @@
     </style>
 </head>
 <body>
-
     <!-- Hamburger Button -->
     <div class="menu-btn" onclick="toggleMenu()">
         <div></div>
@@ -116,15 +119,18 @@
 
     <!-- Side Menu -->
     <div class="side-menu" id="sideMenu">
-        <a href="#">Home</a>
+        <a href="#index">Home</a>
         <a href="#">About</a>
         <a href="#">Services</a>
         <a href="#">Contact</a>
     </div>
 
     <!-- Main Content -->
-    <h1>Welcome to Cafe Page</h1>
+    <h1>Welcome to the Cafe Page</h1>
 
+    <p>Listed below, we have a bunch of affordable cafes for students, suitable for both chilling and studying. Stop by for a coffee, or just sit back and relax while your there!</p>
+    
+    
     <script>
         // Function to toggle the menu open and close
         function toggleMenu() {
