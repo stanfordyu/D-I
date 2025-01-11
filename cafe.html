@@ -21,6 +21,8 @@
         h2 {
             font-size: 2rem;
             color: black;
+            margin-left: 10px;
+            margin-right: 10px;
         }
 
         /* Hamburger button styling */
@@ -104,7 +106,12 @@
             color: white;
         }
 
-        /*Style the map container */
+        /*Style the map*/
+        .map_wrapper {
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
         .map-container {
             width: 100%;
             height: 500px;
@@ -132,10 +139,11 @@
     <h2>Listed below, we have a bunch of affordable cafes for students, suitable for both chilling and studying. Stop by for a coffee, or just sit back and relax while your there!</h2>
 
     <!-- Embed Map -->
-    <div class="map-container"> 
-        <iframe src="https://www.google.com/maps/d/u/2/embed?mid=1JurIbpl8VNfBe3zdZzOhBmbIZhUirXc&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
+    <div class="map-wrapper">
+        <div class="map-container"> 
+            <iframe src="https://www.google.com/maps/d/u/2/embed?mid=1JurIbpl8VNfBe3zdZzOhBmbIZhUirXc&ehbc=2E312F&noprof=1&h1=en" width="640" height="480"></iframe>
+        </div>
     </div>
-    
     
     <script>
         // Function to toggle the menu open and close
