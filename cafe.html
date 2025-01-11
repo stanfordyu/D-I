@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe Page</title>
+    <title>Hamburger to Cross</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,124 +12,71 @@
             background-color: #f0f0f0;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            color: #56018D;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        /* Hamburger menu styling */
         .menu-btn {
             position: fixed;
-            left: 20px;
             top: 20px;
-            z-index: 1001;
-            width: 30px;
-            height: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
+            left: 20px;
+            width: 40px;
+            height: 40px;
             cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
         }
 
-        .menu-btn span {
-            display: block;
-            height: 4px;
+        .menu-btn div {
+            position: relative;
             width: 30px;
+            height: 4px;
             background-color: black;
             border-radius: 2px;
-            transition: all 0.3s ease;
-            transform-origin: center;
+            transition: all 0.3s ease-in-out;
         }
 
-        /* Sidebar styling */
-        .side-menu {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #56018D;
-            color: white;
-            transition: left 0.3s ease;
-            padding-top: 60px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
+        .menu-btn div::before,
+        .menu-btn div::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 4px;
+            background-color: black;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
         }
 
-        .side-menu a {
-            text-decoration: none;
-            color: white;
-            padding: 12px 0;
-            display: block;
-            font-size: 1.5rem;
-            width: 100%;
-            text-align: center;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+        .menu-btn div::before {
+            top: -10px;
         }
 
-        .side-menu a:hover {
-            background-color: #FFD700;
-            transform: scale(1.05);
+        .menu-btn div::after {
+            top: 10px;
         }
 
-        /* Show the menu when active */
-        .side-menu.open {
-            left: 0;
+        /* When menu is active */
+        .menu-btn.active div {
+            background-color: transparent; /* Hide middle line */
         }
 
-        /* Animate menu button when sidebar is open */
-        .menu-btn.open span {
-            background-color: white; /* Change to white when menu opens */
+        .menu-btn.active div::before {
+            transform: rotate(45deg) translate(4px, 4px);
         }
 
-        .menu-btn.open span:nth-child(1) {
-            transform: rotate(45deg) translateY(-10px); /* Top line becomes part of the cross */
-        }
-
-        .menu-btn.open span:nth-child(2) {
-            opacity: 0; /* Hide the middle line */
-        }
-
-        .menu-btn.open span:nth-child(3) {
-            transform: rotate(-45deg) translateY(10px); /* Bottom line becomes part of the cross */
+        .menu-btn.active div::after {
+            transform: rotate(-45deg) translate(4px, -4px);
         }
     </style>
 </head>
 <body>
-
-    <!-- Hamburger Button -->
     <div class="menu-btn" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+        <div></div>
     </div>
-
-    <!-- Side Menu -->
-    <div class="side-menu" id="sideMenu">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
-    </div>
-
-    <!-- Main content -->
-    <h1>Welcome to Cafe Page</h1>
 
     <script>
         function toggleMenu() {
-            const sideMenu = document.getElementById('sideMenu');
             const menuBtn = document.querySelector('.menu-btn');
-
-            sideMenu.classList.toggle('open');
-            menuBtn.classList.toggle('open');
+            menuBtn.classList.toggle('active');
         }
     </script>
-
 </body>
 </html>
