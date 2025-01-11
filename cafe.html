@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamburger to Cross</title>
+    <title>Cafe Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,17 +12,25 @@
             background-color: #f0f0f0;
         }
 
+        h1 {
+            font-size: 2.5rem;
+            color: #56018D;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Hamburger menu styling */
         .menu-btn {
             position: fixed;
-            top: 20px;
             left: 20px;
+            top: 20px;
             width: 40px;
             height: 40px;
             cursor: pointer;
+            z-index: 1001;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1001;
         }
 
         .menu-btn div {
@@ -53,30 +61,87 @@
             top: 10px;
         }
 
-        /* When menu is active */
+        /* Active hamburger (cross) */
         .menu-btn.active div {
             background-color: transparent; /* Hide middle line */
         }
 
         .menu-btn.active div::before {
-            transform: rotate(45deg) translate(4px, 4px);
+            transform: rotate(45deg) translate(0, 0);
         }
 
         .menu-btn.active div::after {
-            transform: rotate(-45deg) translate(4px, -4px);
+            transform: rotate(-45deg) translate(0, 0);
+        }
+
+        /* Sidebar styling */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #56018D;
+            color: white;
+            transition: left 0.3s ease;
+            padding-top: 60px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .side-menu a {
+            text-decoration: none;
+            color: white;
+            padding: 12px 0;
+            display: block;
+            font-size: 1.5rem;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .side-menu a:hover {
+            background-color: #FFD700;
+            transform: scale(1.05);
+        }
+
+        /* Open sidebar */
+        .side-menu.open {
+            left: 0;
         }
     </style>
 </head>
 <body>
+
+    <!-- Hamburger Button -->
     <div class="menu-btn" onclick="toggleMenu()">
         <div></div>
     </div>
 
+    <!-- Side Menu -->
+    <div class="side-menu" id="sideMenu">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <!-- Main content -->
+    <h1>Welcome to Cafe Page</h1>
+
     <script>
         function toggleMenu() {
             const menuBtn = document.querySelector('.menu-btn');
+            const sideMenu = document.getElementById('sideMenu');
+
+            // Toggle active state for both the icon and sidebar
             menuBtn.classList.toggle('active');
+            sideMenu.classList.toggle('open');
         }
     </script>
+
 </body>
 </html>
