@@ -19,7 +19,7 @@
             margin-top: 20px;
         }
 
-        /* Hamburger button styling */
+        /* Hamburger menu styling */
         .menu-btn {
             font-size: 2.5rem;
             position: fixed;
@@ -28,21 +28,6 @@
             z-index: 1001;
             cursor: pointer;
             color: black;
-        }
-
-        /* Hamburger icon as three lines */
-        .menu-btn.open .line1 {
-            transform: rotate(45deg) translate(5px, 5px);
-            background-color: white;
-        }
-
-        .menu-btn.open .line2 {
-            opacity: 0;
-        }
-
-        .menu-btn.open .line3 {
-            transform: rotate(-45deg) translate(7px, -6px);
-            background-color: white;
         }
 
         /* Sidebar styling */
@@ -63,7 +48,6 @@
             align-items: center;
         }
 
-        /* Sidebar links */
         .side-menu a {
             text-decoration: none;
             color: white;
@@ -75,7 +59,7 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        /* Hover effect */
+        /* Hover effect with scaling */
         .side-menu a:hover {
             background-color: #FFD700;
             transform: scale(1.05); /* Small scale without overflowing */
@@ -86,22 +70,18 @@
             left: 0;
         }
 
-        /* Show the hamburger button in white when the menu is open */
+        /* Switch the color of hamburger icon */
         .side-menu.open + .menu-btn {
-            color: white;
+            color:white;
         }
     </style>
 </head>
 <body>
 
     <!-- Hamburger Button -->
-    <div class="menu-btn" onclick="toggleMenu()">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-    <!-- Sidebar Menu -->
+    <!-- Side Menu -->
     <div class="side-menu" id="sideMenu">
         <a href="#">Home</a>
         <a href="#">About</a>
@@ -109,7 +89,7 @@
         <a href="#">Contact</a>
     </div>
 
-    <!-- Main Content -->
+    <!-- Main content -->
     <h1>Welcome to Cafe Page</h1>
 
     <script>
@@ -119,9 +99,18 @@
             const menuBtn = document.querySelector('.menu-btn');
 
             sideMenu.classList.toggle('open');
-            menuBtn.classList.toggle('open');
+
+            // Toggle the color of the hamburger button
+            if (sideMenu.classList.contains('open')) {
+                menuBtn.textContent = '×'; // Change to X when open
+                menuBtn.style.color = 'white'; // Change hamburger to white
+            } else {
+                menuBtn.textContent = '☰'; // Change back to hamburger when closed
+                menuBtn.style.color = 'black'; // Change hamburger to black
+            }
         }
     </script>
+
 
 </body>
 </html>
