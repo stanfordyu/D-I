@@ -30,6 +30,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            align-items: center;
             cursor: pointer;
         }
 
@@ -40,6 +41,7 @@
             background-color: black;
             border-radius: 2px;
             transition: all 0.3s ease;
+            transform-origin: center;
         }
 
         /* Sidebar styling */
@@ -87,7 +89,7 @@
         }
 
         .menu-btn.open span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+            transform: rotate(45deg); /* Top line becomes part of the cross */
         }
 
         .menu-btn.open span:nth-child(2) {
@@ -95,7 +97,7 @@
         }
 
         .menu-btn.open span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
+            transform: rotate(-45deg); /* Bottom line becomes part of the cross */
         }
     </style>
 </head>
