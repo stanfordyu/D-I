@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <title>Cafe Page</title>
     <style>
+        /* Text Styles */
         body {
             font-family: Inter, sans-serif;
             margin: 0;
             padding: 0;
             background-color: white;
         }
-
         h1 {
             font-size: 3rem;
             color: #56018D;
@@ -106,10 +107,45 @@
             color: white;
         }
 
+        /* Image + Text buttons */
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+        .image-container {
+            position: relative;
+            width: 200px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+        .image-container .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+            pointer-events: none;
+        }
+        
+
         
     </style>
 </head>
 <body>
+    <div class="image-container" id="zoomGreenImage">
+        <img src="https://images.squarespace-cdn.com/content/v1/634d875290a2a3441dd425bd/d6064e06-0080-4138-99cc-9f6d6fa5d8b0/KHALIFA+CITY-min.JPG" alt="Joud" />
+        <div class="overlay-text">Test txt</div>
+    </div>
+
+    <div id="map"></div>
+
     <!-- Hamburger Button -->
     <div class="menu-btn" onclick="toggleMenu()">
         <div></div>
@@ -130,11 +166,20 @@
     <h2>Listed below, we have a bunch of affordable cafes for students, suitable for both chilling and studying. Stop by for a coffee, or just sit back and relax while you're there!</h2>
 
     <!-- Embed Map -->
-    <div style = "display: flex; flex-direction: column; align-items: center; justify-content: center;">
-        <iframe src="https://www.google.com/maps/d/u/2/embed?mid=1JurIbpl8VNfBe3zdZzOhBmbIZhUirXc&ehbc=2E312F&noprof=1&hl=en" width="1000" height="800"></iframe>
-    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     
     <script>
+        const map = L.map('map').setView([51.505, -0.09], 13);
+
+        // Add the OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+    
+        // Add a marker
+        L.marker([51.505, -0.09]).addTo(map)
+          .bindPopup('A green point!')
+          .openPopup();
         // Function to toggle the menu open and close
         function toggleMenu() {
             const sideMenu = document.getElementById('sideMenu');
