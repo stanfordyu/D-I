@@ -171,11 +171,13 @@
     <script>
         const map = L.map('map').setView([24.4539, 54.3773], 12);
 
-        // Add the OpenStreetMap tile layer
-        L.tileLayer('https://{s}.tile.openstreetmap.fr/{z}/{x}/{y}.png', {
-          attribution: '© OpenStreetMap contributors'
+        // Add map layer
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+          attribution: '© OpenStreetMap contributors © CARTO',
+          subdomains: 'abcd',
+          maxZoom: 19
         }).addTo(map);
-    
+            
         // Add a marker
         const abuDhabiMarker = L.marker([24.4539, 54.3773]).addTo(map)
           .bindPopup('Abu Dhabi, UAE')
