@@ -75,21 +75,26 @@
         .menu-nav {
             list-style: none;
             padding: 0;
+            width: 100%;
         }
 
         .nav-item {
             margin: 20px 0;
+            width: 100%; /* Ensure full width for hover effect */
         }
 
         .nav-item a {
             text-decoration: none;
             color: white;
             font-size: 1.5rem;
+            display: block; /* Ensure it takes full width */
+            padding: 12px 0;
+            text-align: center;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .nav-item a:hover {
-            background-color: #FFD700;
+            background-color: #FFD700; /* Gold background */
             transform: scale(1.05);
         }
 
