@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe Page</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Cafe Page with Hamburger to Cross</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,70 +16,41 @@
             background-color: #f0f0f0;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            color: #56018D;
-            text-align: center;
-            margin-top: 20px;
-        }
-
         /* Hamburger menu styling */
         .menu-btn {
-            position: fixed;
-            left: 20px;
-            top: 20px;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            z-index: 1001;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .menu-btn div {
-            position: relative;
-            width: 30px;
-            height: 4px;
-            background-color: black;
-            border-radius: 2px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .menu-btn div::before,
-        .menu-btn div::after {
-            content: '';
             position: absolute;
-            width: 30px;
-            height: 4px;
-            background-color: black;
-            border-radius: 2px;
-            transition: all 0.3s ease-in-out;
+            z-index: 3;
+            right: 35px;
+            top: 35px;
+            cursor: pointer;
+            transition: all 0.5s ease-out;
         }
 
-        .menu-btn div::before {
-            top: -10px;
-        }
-
-        .menu-btn div::after {
-            top: 10px;
+        .menu-btn .btn-line {
+            width: 28px;
+            height: 3px;
+            margin: 0 0 5px 0;
+            background: black;
+            transition: all 0.5s ease-out;
         }
 
         /* Active hamburger (cross) */
-        .menu-btn.active div {
-            background-color: transparent; /* Hide middle line */
+        .menu-btn.close .btn-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+            background: white;
         }
 
-        .menu-btn.active div::before {
-            transform: rotate(45deg) translate(0, 0);
+        .menu-btn.close .btn-line:nth-child(2) {
+            opacity: 0;
         }
 
-        .menu-btn.active div::after {
-            transform: rotate(-45deg) translate(0, 0);
+        .menu-btn.close .btn-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+            background: white;
         }
 
         /* Sidebar styling */
-        .side-menu {
+        .menu {
             position: fixed;
             top: 0;
             left: -250px;
@@ -92,56 +67,79 @@
             align-items: center;
         }
 
-        .side-menu a {
+        .menu.show {
+            left: 0;
+        }
+
+        /* Styling the menu items */
+        .menu-nav {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin: 20px 0;
+        }
+
+        .nav-item a {
             text-decoration: none;
             color: white;
-            padding: 12px 0;
-            display: block;
             font-size: 1.5rem;
-            width: 100%;
-            text-align: center;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        .side-menu a:hover {
+        .nav-item a:hover {
             background-color: #FFD700;
             transform: scale(1.05);
         }
 
-        /* Open sidebar */
-        .side-menu.open {
-            left: 0;
+        /* Main content */
+        h1 {
+            font-size: 2.5rem;
+            color: #56018D;
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
-<body>
 
-    <!-- Hamburger Button -->
-    <div class="menu-btn" onclick="toggleMenu()">
-        <div></div>
-    </div>
+<body id="bg-img">
+    <header>
+        <!-- Hamburger Button -->
+        <div class="menu-btn" onclick="toggleMenu()">
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+        </div>
 
-    <!-- Side Menu -->
-    <div class="side-menu" id="sideMenu">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
-    </div>
+        <!-- Sidebar Menu -->
+        <nav class="menu">
+            <ul class="menu-nav">
+                <li class="nav-item"><a href="#">Home</a></li>
+                <li class="nav-item"><a href="#">About</a></li>
+                <li class="nav-item"><a href="#">Services</a></li>
+                <li class="nav-item"><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Main content -->
-    <h1>Welcome to Cafe Page</h1>
+    <!-- Main Content -->
+    <h1>Welcome to the Cafe Page</h1>
 
     <script>
+        let showMenu = false;
+
+        // Toggle menu function
         function toggleMenu() {
             const menuBtn = document.querySelector('.menu-btn');
-            const sideMenu = document.getElementById('sideMenu');
+            const menu = document.querySelector('.menu');
 
-            // Toggle active state for both the icon and sidebar
-            menuBtn.classList.toggle('active');
-            sideMenu.classList.toggle('open');
+            menuBtn.classList.toggle('close');
+            menu.classList.toggle('show');
+
+            showMenu = !showMenu;
         }
     </script>
-
 </body>
+
 </html>
