@@ -107,31 +107,6 @@
         .side-menu.open + .menu-btn {
             color: white;
         }
-
-        /* Image + Text buttons */
-        #map {position: absolute; top: 0; right: 0; bottom: 0; left: 0;}
-        
-        .image-container {
-            position: relative;
-            width: 200px;
-            cursor: pointer;
-            margin-bottom: 10px;
-        }
-        .image-container img {
-            width: 100%;
-            height: auto;
-        }
-        .image-container .overlay-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-            pointer-events: none;
-        }
         
 
         
@@ -158,33 +133,10 @@
     <h2>Listed below, we have a bunch of affordable cafes for students, suitable for both chilling and studying. Stop by for a coffee, or just sit back and relax while you're there!</h2>
 
     <!-- Embed Map -->
-    <div id="map">
-        <a href="https://www.maptiler.com" style="position:absolute;left:10px;bottom:10px;z-index:999;"><img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo"></a>
-    </div>
-
-    p><a href="https://www.maptiler.com/copyright/" target="_blank" rel="noopener">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">&copy; OpenStreetMap contributors</a></p>
-    
-    <div class="image-container" id="zoomGreenImage">
-        <img src="https://images.squarespace-cdn.com/content/v1/634d875290a2a3441dd425bd/d6064e06-0080-4138-99cc-9f6d6fa5d8b0/KHALIFA+CITY-min.JPG" alt="Joud" />
-        <div class="overlay-text">Test txt</div>
-    </div>
+    <iframe src="https://www.google.com/maps/d/u/2/embed?mid=1JurIbpl8VNfBe3zdZzOhBmbIZhUirXc&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
     
     
     <script>
-        const key = 'FPDyviteSr7mirr6MQQ0';
-      const map = L.map('map').setView([49.2125578, 16.62662018], 14); //starting position
-      L.tileLayer(`https://api.maptiler.com/tiles/satellite-mediumres/{12}/{56}/{20}.png?key=${key}`,{ //style URL
-        tileSize: 512,
-        zoomOffset: -1,
-        minZoom: 1,
-        attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
-        crossOrigin: true
-      }).addTo(map);
-                    
-        // Add a marker    
-        const abuDhabiMarker = L.marker([24.4539, 54.3773]).addTo(map)
-          .bindPopup('Abu Dhabi, UAE')
-          .openPopup();
         // Function to toggle the menu open and close
         function toggleMenu() {
             const sideMenu = document.getElementById('sideMenu');
