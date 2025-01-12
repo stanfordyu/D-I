@@ -169,12 +169,14 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     
     <script>
-        const map = L.map('map').setView([24.4539, 54.3773], 12);
-
-        // Add map layer
-        L.tileLayer('https://api.maptiler.com/tiles/satellite-v2/{z}/{x}/{y}.png?key=6oD4FBcy8WlEFT4uHfjs', {
-            attribution: '© MapTiler © OpenStreetMap contributors',
-            maxZoom: 18
+        const key = 'FPDyviteSr7mirr6MQQ0';
+        const map = L.map('map').setView([49.2125578, 16.62662018], 14); //starting position
+        L.tileLayer(`https://api.maptiler.com/tiles/satellite-mediumres/{z}/{x}/{y}.png?key=${key}`,{ //style URL
+            tileSize: 512,
+            zoomOffset: -1,
+            minZoom: 1,
+            attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
+            crossOrigin: true
         }).addTo(map);
                     
         // Add a marker    
