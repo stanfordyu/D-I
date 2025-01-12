@@ -108,7 +108,11 @@
             color: white;
         }
         
-
+        /* Map Styling */
+        iframe {
+            border: 2px solid #56018D;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
         
     </style>
 </head>
@@ -133,7 +137,10 @@
     <h2>Listed below, we have a bunch of affordable cafes for students, suitable for both chilling and studying. Stop by for a coffee, or just sit back and relax while you're there!</h2>
 
     <!-- Embed Map -->
-    <iframe src="https://www.google.com/maps/d/u/2/embed?mid=1JurIbpl8VNfBe3zdZzOhBmbIZhUirXc&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
+    <div style="display: flex; flex-direction: column; align-items: center;"> 
+            <iframe src="https://www.google.com/maps/d/u/2/embed?mid=1JurIbpl8VNfBe3zdZzOhBmbIZhUirXc&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>  
+    </div>
+    
     
     
     <script>
