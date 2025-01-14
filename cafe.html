@@ -9,7 +9,7 @@
         header {
             width: 100%;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 10px;
             align-self: center;
         }
         body {
@@ -30,9 +30,20 @@
         h2 {
             font-size: 2rem;
             color: black;
-            margin-left: 40px;
-            margin-right: 40px;
+            margin: 20px auto;
+            text-align: center;
+            width: 100%;
         }
+        .row {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
         .text-container {
             flex: 1;
             padding: 20px;
@@ -146,9 +157,7 @@
     </style>
 </head>
 
-<header>
-    <h1>Welcome to the Cafe Page</h1>
-</header>
+
 <body>
     <!-- Hamburger Button -->
     <div class="menu-btn" onclick="toggleMenu()">
@@ -164,36 +173,43 @@
         <a href="#">Services</a>
         <a href="#">Contact</a>
     </div>
-
+    
+    <header>
+        <h1>Welcome to the Cafe Page</h1>
+    </header>
+    
     <!-- Main Content -->
     <h2>Check out some of the top cafes listed below!</h2>
-    <div class="text-container">
-        <div class="dropdown-container">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span>Red: Joud Cafe</span>
-                <span class="arrow">&#9660;</span>
-            </div>
-            <div class="dropdown-content">
-                Joud Cafe is a cozy spot with great coffee and a welcoming atmosphere. It's perfect for studying or relaxing with friends.
-            </div>
-        </div>
-        <div class="dropdown-container">
-            <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span>Orange: La Brioche Khalifa City Cafe</span>
-                <span class="arrow">&#9660;</span>
-            </div>
-            <div class="dropdown-content">
-                A family-friendly cafe offering delicious French pastries and a comfortable seating area.
-            </div>
-        </div>
-        <!-- Add more cafes here following the same format -->
-    </div>
 
-    <!-- Embed Map -->
-    <div class="map-container"> 
-        <iframe src="https://www.google.com/maps/d/u/2/embed?mid=1JurIbpl8VNfBe3zdZzOhBmbIZhUirXc&ehbc=2E312F&noprof=1&hl=en" width="640" height="480"></iframe>  
+    <div class="row">
+        <div class="text-container">
+            <div class="dropdown-container">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>Red: Joud Cafe</span>
+                    <span class="arrow">&#9660;</span>
+                </div>
+                <div class="dropdown-content">
+                    Joud Cafe is a cozy spot with great coffee and a welcoming atmosphere. It's perfect for studying or relaxing with friends.
+                </div>
+            </div>
+            <div class="dropdown-container">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span>Orange: La Brioche Khalifa City Cafe</span>
+                    <span class="arrow">&#9660;</span>
+                </div>
+                <div class="dropdown-content">
+                    A family-friendly cafe offering delicious French pastries and a comfortable seating area.
+                </div>
+            </div>
+            <!-- Add more cafes here following the same format -->
+        </div>
+    
+        <!-- Embed Map -->
+        <div class="map-container"> 
+            <iframe src="https://www.google.com/maps/d/u/2/embed?mid=1JurIbpl8VNfBe3zdZzOhBmbIZhUirXc&ehbc=2E312F&noprof=1&hl=en" width="640" height="480"></iframe>  
+        </div>
     </div>
-
+    
     <script>
         function toggleMenu() {
             const sideMenu = document.getElementById('sideMenu');
