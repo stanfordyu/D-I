@@ -123,34 +123,39 @@
         .side-menu.open {
             left: 0;
         }
+        
         .dropdown-container {
             margin-bottom: 20px;
         }
+
+        /* New Dropdown Styles */
         .dropdown-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px 15px;
             background-color: transparent;
-            border: 1px solid #56018D;
+            border: 2px solid;
             border-radius: 5px;
             cursor: pointer;
-            color: #56018D
             font-size: 1.2rem;
+            color: black;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
         .dropdown-header:hover {
-            background-color: #56018D;
+            background-color: currentColor; /* Color will match border color */
             color: white;
         }
+
         .arrow {
-            transition: transform 0.3s ease;
-            border: solid #56018D
-            border-width: 0 3px 3px 0;
-            padding: 5px
+            transition: transform 0.3s ease, color 0.3s ease;
         }
+
         .arrow.open {
             transform: rotate(180deg);
         }
+
         .dropdown-content {
             display: none;
             padding: 10px;
@@ -158,12 +163,34 @@
             border-top: none;
             background-color: #fafafa;
         }
+
         .dropdown-content.active {
             display: block;
         }
+
+        /* Dropdowns with specific colors */
+        .dropdown-header[data-color="rgb(230, 81, 0)"] {
+            border-color: rgb(230, 81, 0);
+        }
+
+        .dropdown-header[data-color="rgb(255, 87, 34)"] {
+            border-color: rgb(255, 87, 34);
+        }
+
+        .dropdown-header[data-color="rgb(255, 193, 7)"] {
+            border-color: rgb(255, 193, 7);
+        }
+
+        .dropdown-header[data-color="rgb(76, 175, 80)"] {
+            border-color: rgb(76, 175, 80);
+        }
+
+        .dropdown-header[data-color="rgb(33, 150, 243)"] {
+            border-color: rgb(33, 150, 243);
+        }
+
     </style>
 </head>
-
 
 <body>
     <!-- Hamburger Button -->
@@ -191,8 +218,8 @@
     <div class="row">
         <div class="text-container">
             <div class="dropdown-container">
-                <div class="dropdown-header" onclick="toggleDropdown(this)">
-                    <span>Red: Joud Cafe</span>
+                <div class="dropdown-header" onclick="toggleDropdown(this)" data-color="rgb(230, 81, 0)">
+                    <span>Joud Cafe</span>
                     <span class="arrow">&#9660;</span>
                 </div>
                 <div class="dropdown-content">
@@ -200,8 +227,8 @@
                 </div>
             </div>
             <div class="dropdown-container">
-                <div class="dropdown-header" onclick="toggleDropdown(this)">
-                    <span>Orange: La Brioche Khalifa City Cafe</span>
+                <div class="dropdown-header" onclick="toggleDropdown(this)" data-color="rgb(255, 87, 34)">
+                    <span>La Brioche Khalifa City Cafe</span>
                     <span class="arrow">&#9660;</span>
                 </div>
                 <div class="dropdown-content">
@@ -209,8 +236,8 @@
                 </div>
             </div>
             <div class="dropdown-container">
-                <div class="dropdown-header" onclick="toggleDropdown(this)">
-                    <span>Yellow: % Arabica Cafe</span>
+                <div class="dropdown-header" onclick="toggleDropdown(this)" data-color="rgb(255, 193, 7)">
+                    <span>% Arabica Cafe</span>
                     <span class="arrow">&#9660;</span>
                 </div>
                 <div class="dropdown-content">
@@ -218,8 +245,8 @@
                 </div>
             </div>
             <div class="dropdown-container">
-                <div class="dropdown-header" onclick="toggleDropdown(this)">
-                    <span>Green: Breath Cafe</span>
+                <div class="dropdown-header" onclick="toggleDropdown(this)" data-color="rgb(76, 175, 80)">
+                    <span>Breath Cafe</span>
                     <span class="arrow">&#9660;</span>
                 </div>
                 <div class="dropdown-content">
@@ -227,15 +254,14 @@
                 </div>
             </div>
             <div class="dropdown-container">
-                <div class="dropdown-header" onclick="toggleDropdown(this)">
-                    <span>Red: Joud Cafe</span>
+                <div class="dropdown-header" onclick="toggleDropdown(this)" data-color="rgb(33, 150, 243)">
+                    <span>Café de Flore</span>
                     <span class="arrow">&#9660;</span>
                 </div>
                 <div class="dropdown-content">
-                    Price Range: AED 10-45 <br> Known For: Specialty coffee, pastries
+                    Price Range: AED 15-40 <br>Known For: Espresso, Pastries
                 </div>
             </div>
-            <!-- Add more cafes here following the same format -->
         </div>
     
         <!-- Embed Map -->
