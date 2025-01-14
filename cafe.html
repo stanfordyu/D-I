@@ -160,9 +160,9 @@
         
         /* Dropdown content styles */
         .dropdown-content {
-            max-height 0;
+            max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out
+            transition: max-height 0.3s ease-out;
             padding: 0 15px;
             border: 1px solid;
             border-top: none;
@@ -426,36 +426,28 @@
         }
 
         function toggleDropdown(element) {
-        const content = element.nextElementSibling;
-        const arrow = element.querySelector('.arrow');
-        const allDropdowns = document.querySelectorAll('.dropdown-content');
-        const allArrows = document.querySelectorAll('.arrow');
-    
-        // Close all other dropdowns
-        allDropdowns.forEach(dropdown => {
-            if (dropdown !== content && dropdown.classList.contains('active')) {
-                dropdown.classList.remove('active');
-                dropdown.style.maxHeight = null;
+            const content = element.nextElementSibling;
+            const arrow = element.querySelector('.arrow');
+            
+            // Close all other dropdowns
+            document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                if (dropdown !== content && dropdown.classList.contains('active')) {
+                    dropdown.classList.remove('active');
+                    dropdown.style.maxHeight = null;
+                }
+            });
+        
+            // Toggle the clicked dropdown
+            content.classList.toggle('active');
+            arrow.classList.toggle('open');
+        
+            if (content.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = null;
             }
-        });
-    
-        // Reset all other arrows
-        allArrows.forEach(arr => {
-            if (arr !== arrow && arr.classList.contains('open')) {
-                arr.classList.remove('open');
-            }
-        });
-    
-        // Toggle the clicked dropdown
-        content.classList.toggle('active');
-        arrow.classList.toggle('open');
-    
-        if (content.classList.contains('active')) {
-            content.style.maxHeight = content.scrollHeight + "px";
-        } else {
-            content.style.maxHeight = null;
         }
-    }
+
     </script>
 
 </body>
