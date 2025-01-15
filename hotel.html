@@ -50,15 +50,23 @@
             max-width: 45%;
         }
         .map-container {
-            flex: 1;
-            padding: 20px;
             width: 100%;
-            height: 700px;
+            height: 0;
+            padding-bottom: 56.25%;
+            position: relative;
+            margin-top: 20px;
         }
-        iframe {
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            border: 0;
+        }
+        .map-attribution {
+            text-align: center;
+            font-size: 0.8rem;
+            margi-top: 5px;
         }
         .menu-btn {
             position: fixed;
@@ -315,9 +323,9 @@
         </div>
     
         <!-- Embed Map -->
-        <div style="display: flex; flex-direction: column; align-items: center;"> 
+        <div class="map-container"> 
             <iframe title="Smappen - Shared map" src="https://www.smappen.com/app/iframe/R7G7fYdHz0eFMTlf" frameborder="0" allowfullscreen> </iframe> 
-            <div style="text-align: center"> 
+            <div class="map-attribution"> 
                 <i style="font-size: 0.6rem"> Map made using <a href="https://www.smappen.com" target="_blank"> smappen </a> </i> 
             </div> 
         </div>
