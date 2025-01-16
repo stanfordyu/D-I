@@ -21,25 +21,29 @@
         /* Img Styling */
         .hero-section {
           position: relative;
+          width: 100%;
           height: 100vh; /* Full viewport height */
           overflow: hidden;
         }
         
         .imagez-container {
-          position: relative;
+          position: absolute;
           top: 0;
+          left: 0;
           height: 100vh;
-          width: 100%;
+          width: 100vh;
           overflow: hidden;
         }
         
         .zoom-image {
+          position: absolute;
           width: 120%; /* Start zoomed in */
           top: 50%;
           left: 50%;
-          height: auto;
+          height: 100%;
+          object-fit: cover;
           transform: translate(-50%, -50%) scale(1.2); /* Initial zoom */
-          transition: transform 0.2s ease-out;
+          transition: transform 0.3s ease-out;
         }
         
         .text-section {
@@ -160,21 +164,23 @@
     <!-- END IMAGE HYPERLINKS -->
 
     <script>
-        // Select the image element
-        const zoomImage = document.querySelector('.zoom-image');
-        
-        // Listen to the scroll event
-        window.addEventListener('scroll', () => {
-          const scrollTop = window.scrollY; // Distance scrolled from top
-          const maxZoomOut = 0.8; // Minimum scale for the image
-          const zoomOutSpeed = 200; // Adjust zoom effect speed
-        
-          // Calculate the scale factor based on scroll position
-          const scale = Math.max(1.2 - scrollTop / zoomOutSpeed, maxZoomOut);
-        
-          // Apply the scale transformation to the image
-          zoomImage.style.transform = `scale(${scale})`;
-        });
+      document.addEventListener('DOMContentLoaded', function() {
+      const heroSection = document.querySelector('.hero-section');
+      const zoomImage = document.querySelector('.zoom-image');
+      
+      let initialScale = 1.2;
+      let scrollPosition = 0;
+    
+      function handleScroll() {
+        scrollPosition = window.pageYOffset;
+        let scale = initialScale - (scrollPosition * 0.001);
+        scale = Math.max(1, scale); // Prevent scaling below 1
+        zoomImage.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      }
+    
+      window.addEventListener('scroll', handleScroll);
+    });
+
     </script>
         
     </main>
