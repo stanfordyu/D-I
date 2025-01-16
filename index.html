@@ -61,6 +61,18 @@
             z-index: 10;
         }
 
+        .fade-in {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        
+        .fade-in.is-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+
     
         /* Prevent content overlap */
         main {
@@ -142,7 +154,7 @@
         </section>
 
     <!-- IMAGE HYPERLINKS -->
-       <div class="image-container">
+       <div class="image-container fade-in">
             <a href="cafe.html" class="link-container">
                 <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cafe">
                 <h3>Cafes</h3>
@@ -187,16 +199,33 @@
       function handleScroll() {
         scrollPosition = window.pageYOffset;
         let scale = initialScale - (scrollPosition * 0.001);
-        scale = Math.max(1, scale); // Prevent scaling below 1
+        scale = Math.max(1, scale);
         zoomImage.style.transform = `translate(-50%, -50%) scale(${scale})`;
         
-        // Fade out text
         let opacity = 1 - (scrollPosition / 300);
-        opacity = Math.max(0, opacity); // Prevent negative opacity
+        opacity = Math.max(0, opacity);
         fadeText.style.opacity = opacity;
       }
     
       window.addEventListener('scroll', handleScroll);
+    
+      // Fade in elements on scroll
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const fadeInObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('is-visible');
+            }, index * 200); // 200ms delay between each element
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+    
+      fadeElements.forEach(element => {
+        fadeInObserver.observe(element);
+      });
     });
 
 
