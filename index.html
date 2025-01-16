@@ -64,7 +64,7 @@
         .fade-in {
           opacity: 0;
           transform: translateY(20px);
-          transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+          transition: opacity 1s ease-out, transform 1s ease-out;
         }
         
         .fade-in.is-visible {
@@ -217,7 +217,7 @@
           if (entry.isIntersecting) {
             setTimeout(() => {
               entry.target.classList.add('is-visible');
-            }, index * 200); // 200ms delay between each element
+            }, index * 500); // 200ms delay between each element
             observer.unobserve(entry.target);
           }
         });
