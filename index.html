@@ -18,42 +18,34 @@
             margin: 0px;
         }
 
-        /* Header Styling */
-        header {
-            background-color: #56018D;
-            color: white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        /* Img Styling */
+        .hero-section {
+          position: relative;
+          height: 100vh; /* Full viewport height */
+          overflow: hidden;
         }
-        .title {
-            text-align: center;
-            padding: 1rem 0; /* Space around the title */
-            font-size: 1.8rem;
-            font-weight: bold;
+        
+        .image-container {
+          position: sticky;
+          top: 0;
+          height: 100vh;
+          width: 100%;
+          overflow: hidden;
+        }
+        
+        .zoom-image {
+          width: 120%; /* Start zoomed in */
+          height: auto;
+          transform: scale(1.2); /* Initial zoom */
+          transition: transform 0.2s ease-out;
+        }
+        
+        .text-section {
+          padding: 50px;
+          background-color: white;
+          text-align: center;
         }
 
-        .nav-bar {
-            display: flex;
-            justify-content: center; /* Center the navigation links */
-            background-color: #56018D; /* Slightly darker for separation */
-            padding: 0.5rem 0; /* Space around the links */
-        }
-
-        .nav-bar a {
-            text-decoration: none;
-            color: white;
-            margin: 0 1rem; /* Space between links */
-            font-size: 1rem;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        .nav-bar a:hover {
-            color: #FFD700; /* Gold color for hover */
-        }
     
         /* Prevent content overlap */
         main {
@@ -119,15 +111,12 @@
 
 <body>
 
-    <!-- Header Section -->
-    <header>
-        <!-- Title Section -->
-        <div class="title">
-            Abu Dhabi Winter Guide for NYUAD Community
+    <div class="hero-section">
+        <div class="image-container">
+            <img src="https://media.istockphoto.com/id/531771489/photo/view-of-abu-dhabi-skyline-at-sunset.jpg?s=612x612&w=0&k=20&c=gnxMxnl9y704N_laWxx8k0dTf74upO2U-HJqEkip0-U=" alt="Zoom Image" class="zoom-image">
         </div>
-
-    </header>
-
+    </div>
+    
     <!-- Start of Main Content: -->
     <main>
         <section>
@@ -167,6 +156,24 @@
             </a>
         </div>
     <!-- END IMAGE HYPERLINKS -->
+
+    <script>
+        // Select the image element
+        const zoomImage = document.querySelector('.zoom-image');
+        
+        // Listen to the scroll event
+        window.addEventListener('scroll', () => {
+          const scrollTop = window.scrollY; // Distance scrolled from top
+          const maxZoomOut = 0.8; // Minimum scale for the image
+          const zoomOutSpeed = 200; // Adjust zoom effect speed
+        
+          // Calculate the scale factor based on scroll position
+          const scale = Math.max(1.2 - scrollTop / zoomOutSpeed, maxZoomOut);
+        
+          // Apply the scale transformation to the image
+          zoomImage.style.transform = `scale(${scale})`;
+        });
+    </script>
         
     </main>
 </body>
