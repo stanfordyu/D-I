@@ -132,6 +132,7 @@
         </div>
         <div class="text-section" id="fadeText">
             Abu Dhabi - The Capital City of the United Arab Emirates
+        </div>
     </div>
     
     <!-- Start of Main Content: -->
@@ -178,6 +179,7 @@
       document.addEventListener('DOMContentLoaded', function() {
       const heroSection = document.querySelector('.hero-section');
       const zoomImage = document.querySelector('.zoom-image');
+      const fadeText = document.getElementById('fadeText');
       
       let initialScale = 1.2;
       let scrollPosition = 0;
@@ -187,10 +189,16 @@
         let scale = initialScale - (scrollPosition * 0.001);
         scale = Math.max(1, scale); // Prevent scaling below 1
         zoomImage.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        
+        // Fade out text
+        let opacity = 1 - (scrollPosition / 300);
+        opacity = Math.max(0, opacity); // Prevent negative opacity
+        fadeText.style.opacity = opacity;
       }
     
       window.addEventListener('scroll', handleScroll);
     });
+
 
     </script>
         
