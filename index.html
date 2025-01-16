@@ -47,9 +47,17 @@
         }
         
         .text-section {
-          padding: 50px;
-          background-color: white;
-          text-align: center;
+          position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 0.3s ease-out;
+            z-index: 10;
         }
 
     
@@ -121,6 +129,8 @@
         <div class="imagez-container">
             <img src="https://media.istockphoto.com/id/531771489/photo/view-of-abu-dhabi-skyline-at-sunset.jpg?s=612x612&w=0&k=20&c=gnxMxnl9y704N_laWxx8k0dTf74upO2U-HJqEkip0-U=" alt="Zoom Image" class="zoom-image">
         </div>
+        <div class="text-section" id="fadeText">
+            Abu Dhabi - The Capital City of the United Arab Emirates
     </div>
     
     <!-- Start of Main Content: -->
