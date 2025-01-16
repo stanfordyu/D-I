@@ -57,6 +57,7 @@
             text-align: center;
             opacity: 1;
             transition: opacity 0.3s ease-out;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             z-index: 10;
         }
 
@@ -189,19 +190,6 @@
       }
     
       window.addEventListener('scroll', handleScroll);
-
-      window.addEventListener('scroll', function() {
-            const fadeText = document.getElementById('fadeText');
-            const scrollY = window.scrollY; // Get the scroll position
-            const maxScroll = window.innerHeight; // Height of the viewport
-
-            // Calculate opacity based on scroll position (fade out as you scroll down)
-            let opacity = 1 - (scrollY / maxScroll);
-            if (opacity < 0) opacity = 0; // Don't let the opacity go below 0
-
-            // Apply the opacity to the text
-            fadeText.style.opacity = opacity;
-        });
     });
 
     </script>
