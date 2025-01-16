@@ -1,13 +1,196 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>Bus Route Page</title>
+    <style>
+        /* Text Styles */
+        header {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+            align-self: center;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Inter, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            min-height: 100vh;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #56018D;
+        }
+        h2 {
+            font-size: 2rem;
+            color: black;
+            margin: 20px auto;
+            text-align: center;
+            width: 100%;
+        }
+        .row {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .text-container {
+            flex: 1;
+            padding: 20px;
+            max-width: 90%;
+        }
+        
+        .menu-btn {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 1001;
+            cursor: pointer;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 4px;
+        }
+        .menu-btn div {
+            width: 100%;
+            height: 3px;
+            background-color: black;
+            transition: all 0.3s ease;
+        }
+        .menu-btn.open div:nth-child(1) {
+            transform: translateY(11px) rotate(45deg);
+            background-color: white;
+        }
+        .menu-btn.open div:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-btn.open div:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
+            background-color: white;
+        }
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #56018D;
+            color: white;
+            transition: left 0.3s ease;
+            padding-top: 60px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .side-menu a {
+            text-decoration: none;
+            color: white;
+            padding: 12px 0;
+            display: block;
+            font-size: 1.5rem;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .side-menu a:hover {
+            background-color: #FFD700;
+            transform: scale(1.05);
+        }
+        .side-menu.open {
+            left: 0;
+        }
+        .pdf-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .pdf-container iframe {
+            border: none;
+            width: 100%;
+            height: 1500px;
+        }
+        
+        @media (max-width: 768px) {
+            .pdf-container iframe {
+                height: 400px;
+            }
+        }
+
+    </style>
 </head>
+
 <body>
-    <h1>Hello, World!</h1>
-    <p>Welcome to your first HTML page!</p>
+    <!-- Hamburger Button -->
+    <div class="menu-btn" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Side Menu -->
+    <div class="side-menu" id="sideMenu">
+        <a href="index.html">Home</a>
+        <a href="cafe.html">Cafes</a>
+        <a href="places.html">Places to Visit</a>
+        <a href="hotel.html">Hotels</a>
+        <a href="restaurant.html">Restaurants</a>
+        <a href="winter.html">Winter Events</a>
+        <a href="bus.html">Bus Routes</a>
+    </div>
+    
+    <header>
+        <h1>Contact Us for any questions</h1>
+    </header>
+    
+    <!-- Main Content -->
+    <h2>Linked <a href="https://www.instagram.com/inabudhabi.ae?igsh=ZGMxZjJyYzBqdnlx" target="_blank">here</a> is the instagram page that covers everything that happens in Abu Dhabi. For more info, please contact them!</h2>
+
+    <script>
+        function toggleMenu() {
+            const sideMenu = document.getElementById('sideMenu');
+            const menuBtn = document.querySelector('.menu-btn');
+            sideMenu.classList.toggle('open');
+            menuBtn.classList.toggle('open');
+        }
+
+        function toggleDropdown(element) {
+            const content = element.nextElementSibling;
+            const arrow = element.querySelector('.arrow');
+            
+            // Close all other dropdowns
+            document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                if (dropdown !== content && dropdown.classList.contains('active')) {
+                    dropdown.classList.remove('active');
+                    dropdown.style.maxHeight = null;
+                }
+            });
+        
+            // Toggle the clicked dropdown
+            content.classList.toggle('active');
+            arrow.classList.toggle('open');
+        
+            if (content.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = null;
+            }
+        }
+
+    </script>
+
 </body>
 </html>
